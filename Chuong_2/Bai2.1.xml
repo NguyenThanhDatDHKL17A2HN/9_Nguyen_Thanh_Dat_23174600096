@@ -1,0 +1,15 @@
+<Company>
+    <Director>
+        <Name>Nguyen Thanh Dat</Name>
+    </Director>
+    <Address>
+        <Street>218 Linh Nam</Street>
+        <City>Hà Nội</City>
+        <Country>Việt Nam</Country>
+    </Address>
+    <Contact>
+        <Phone>0364796117</Phone>
+        <Email>thanhdattcsl@gmail.com</Email>
+    </Contact>
+    <TaxCode>123456789</TaxCode>
+</Company>

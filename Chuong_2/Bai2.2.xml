@@ -1,0 +1,23 @@
+<sinhvien>
+    <sinhvien1>
+        <msv>23174600096</msv>
+        <ten>nguyenthanhdat</ten>
+        <namsinh>2005</namsinh>
+        <lop>DHKL17A2HN</lop>
+        <gioitinh>nam</ioitinh>
+    </sinhvien1>
+    <sinhvien2>
+        <msv>23174600019</msv>
+        <ten>nguyenxuanhuy</ten>
+        <namsinh>2005</namsinh>
+        <lop>DHKL17A1HN</lop>
+        <gioitinh>nam</gioitinh>
+    <sinhvien2>
+    </sinhvien3>
+        <msv>23174600102</msv>
+        <ten>kieutrangnhung</ten>
+        <namsinh>2005</namsinh>
+        <lop>DHKL17A2HN</lop>
+        <gioitinh>nu</gioitinh>
+    </sinhvien3>
+</sinhvien>
