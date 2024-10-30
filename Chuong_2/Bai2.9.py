@@ -1,44 +1,41 @@
 import json
 
-def tinh_tong_nhan_vien(data):
-    tong_so_nhan_vien = 0
-    for don_vi in data['don_vi']:
-        so_nhan_vien_don_vi = don_vi['so_nhan_vien']
-        tong_so_nhan_vien += so_nhan_vien_don_vi
-    return tong_so_nhan_vien
+a = '''
+{
+    "congty": {
+        "ten": "Công ty TNHH Đất Việt",
+        "diachi": "abc Giải Phóng - Hà Nội",
+        "nhanvien": [
+            {"ten": "A", "don_vi": "A1"},
+            {"ten": "B", "don_vi": "A2"},
+            {"ten": "C", "don_vi": "A2"},
+            {"ten": "D", "don_vi": "A3"},
+            {"ten": "E", "don_vi": "A2"},
+            {"ten": "F", "don_vi": "A4"},
+            {"ten": "G", "don_vi": "A4"}
+        ]
+    }
+}'''
 
-def in_thong_tin_cong_ty(data):
-    print(f'Tên công ty: {data["ten_cong_ty"]}')
-    print(f'Địa chỉ: {data["dia_chi"]}')
+b = json.loads(a)
 
-def in_thong_ke_don_vi(i, don_vi, tong_nhan_vien):
-    ten_don_vi = don_vi['ten_don_vi']
-    so_nhan_vien_don_vi = don_vi['so_nhan_vien']
-    ty_le = (so_nhan_vien_don_vi / tong_nhan_vien) * 100
+tong_so_nhan_vien = len(b["congty"]["nhanvien"])
 
-    print(f'{i}./ Tên đơn vị: {ten_don_vi}.')
-    print(f'   - Số nhân viên: {so_nhan_vien_don_vi}')
-    print(f'   - Tỷ lệ: {ty_le:.2f}%.\n')
-
-def thong_ke_nhan_vien(data):
-    # Tính tổng số nhân viên
-    tong_nhan_vien = tinh_tong_nhan_vien(data)
-
-    # In thông tin công ty
-    in_thong_tin_cong_ty(data)
-    print(f'Tổng số nhân viên: {tong_nhan_vien}')
-
-    # In thống kê nhân viên theo đơn vị
-    print('\n-----Thống kê nhân viên theo đơn vị------')
-    for i, don_vi in enumerate(data['don_vi'], 1):
-        in_thong_ke_don_vi(i, don_vi, tong_nhan_vien)
-
-if __name__ == '__main__':
-    # Đọc dữ liệu từ file JSON
-    with open('du_lieu.json', 'r') as file:
-        du_lieu = json.load(file)
-        print(du_lieu)  # Kiểm tra dữ liệu đã đọc
-
-
-    # Gọi hàm thống kê nhân viên
-    thong_ke_nhan_vien(du_lieu)
+thong_ke = {}
+for i in b["congty"]["nhanvien"]:
+    don_vi = i["don_vi"]
+    if don_vi in thong_ke:
+        thong_ke[don_vi] += 1 
+    else:
+        thong_ke[don_vi] = 1
+x = b["congty"]["ten"]
+print(f"Công ty: {x}")
+s = b["congty"]["diachi"]
+print(f"Địa chỉ: {s}")
+print(f"Tổng số nhân viên: {tong_so_nhan_vien}")
+print("--------Thống kế nhân viên theo đơn vị--------")
+for i, j in thong_ke.items():
+    ty_le = (j/tong_so_nhan_vien)*100
+    print(f"Tên đơn vị: {i}")
+    print(f"  - Số nhân viên: {j}")
+    print(f"  - Tỷ lệ: {ty_le:.2f}% \n")
